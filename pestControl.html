@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pest Control Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>Pest Control Service Providers</h1>
+
+    <!-- Example 1: Pest Control Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Adam Wilson</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 950</p>
+      <p><strong>Available Areas:</strong> Maple Grove, Riverside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 30 reviews)</p>
+        <ul class="reviews">
+          <li>"Highly effective pest control! Adam's service was excellent!" - Sarah</li>
+          <li>"No more pests! Thank you for your professional service." - John</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Adam Wilson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 2: Pest Control Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Olivia Scott</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 951</p>
+      <p><strong>Available Areas:</strong> Hillcrest, Downtown</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 25 reviews)</p>
+        <ul class="reviews">
+          <li>"Great pest control service! Got rid of the termites in my home." - Emily</li>
+          <li>"Reliable and quick. Highly recommend!" - Mark</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Olivia Scott')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 3: Pest Control Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: David Green</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 952</p>
+      <p><strong>Available Areas:</strong> Meadowbrook, Oakwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 28 reviews)</p>
+        <ul class="reviews">
+          <li>"David did an amazing job removing the rodents from our attic!" - Lily</li>
+          <li>"Fast, effective, and professional service. Highly recommend." - Paul</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('David Green')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Pest Control Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Mia Johnson</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 953</p>
+      <p><strong>Available Areas:</strong> Sunset Hills, Broadwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 18 reviews)</p>
+        <ul class="reviews">
+          <li>"Excellent service for dealing with ants in the kitchen!" - David</li>
+          <li>"Mia was very professional and the problem was solved quickly." - Sophia</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Mia Johnson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Pest Control Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Ethan Clark</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 954</p>
+      <p><strong>Available Areas:</strong> Forestview, Riverside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 35 reviews)</p>
+        <ul class="reviews">
+          <li>"Ethan provided great pest control service. Highly recommend!" - Emma</li>
+          <li>"Very thorough and effective in eliminating pests." - Noah</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Ethan Clark')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

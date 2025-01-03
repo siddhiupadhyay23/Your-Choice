@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign-up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100%;
+        background: url('login.jpg') no-repeat center center fixed;
+        background-size: 100% 100%;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 40px; /* Increased padding */
+        border-radius: 10px;
+        text-align: center;
+        width: 90%;
+        padding-right: 3.5%;
+        max-width: 450px; /* Slightly wider */
+        color: white;
+    }
+
+    .form-container h1 {
+        font-size: 3rem; /* Larger font size */
+        margin-bottom: 15px;
+    }
+
+    .form-container p {
+        font-size: 1.5rem; /* Larger font size */
+        margin-bottom: 25px;
+    }
+
+    .form-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .form-buttons button {
+        padding: 20px 30px; /* Larger padding */
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        border-bottom: 3px solid transparent; /* Thicker underline */
+        font-size: 1.5rem; /* Larger font size */
+    }
+
+    .form-buttons button.active {
+        border-bottom: 3px solid white;
+    }
+
+    .form {
+        display: none;
+    }
+
+    .form.active {
+        display: block;
+    }
+
+    form h2 {
+        font-size: 2rem; /* Larger font size */
+        margin-bottom: 25px;
+    }
+
+    form input {
+        width: 100%;
+        padding: 15px; /* Larger padding */
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.3rem; /* Larger font size */
+    }
+
+    form button {
+        width: 100%;
+        padding: 15px; /* Larger padding */
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 1.5rem; /* Larger font size */
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="overlay">
+            <div class="form-container">
+                <h1>Welcome to your choice</h1>
+                <p>Your one-stop solution for housing and grocery needs!</p>
+                <div class="form-buttons">
+                    <button id="login-btn" class="active">Login</button>
+                    <button id="signup-btn">Sign Up</button>
+                </div>
+                <form id="login-form" class="form active">
+                    <h2>Login</h2>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <form id="signup-form" class="form">
+                    <h2>Sign Up</h2>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <input type="OTP" placeholder="enter OTP">
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+
+        loginBtn.addEventListener('click', () => {
+            loginBtn.classList.add('active');
+            signupBtn.classList.remove('active');
+            loginForm.classList.add('active');
+            signupForm.classList.remove('active');
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+            signupForm.classList.add('active');
+            loginForm.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

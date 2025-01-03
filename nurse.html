@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nurse Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>Nurse Service Providers</h1>
+
+    <!-- Example 1: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Sarah Roberts</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 960</p>
+      <p><strong>Available Areas:</strong> Downtown, Hillside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 30 reviews)</p>
+        <ul class="reviews">
+          <li>"Sarah provided excellent care for my grandmother. Highly recommend!" - Rachel</li>
+          <li>"Professional, caring, and always on time. A great nurse." - Tom</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Sarah Roberts')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 2: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Emma Lee</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 961</p>
+      <p><strong>Available Areas:</strong> Riverside, Oakwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 28 reviews)</p>
+        <ul class="reviews">
+          <li>"Emma was compassionate and professional during my recovery." - Alice</li>
+          <li>"Very skilled nurse. Would hire again for any home care needs." - John</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Emma Lee')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 3: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Olivia Martinez</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 962</p>
+      <p><strong>Available Areas:</strong> Greenfield, Maplewood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 22 reviews)</p>
+        <ul class="reviews">
+          <li>"Olivia took great care of my father after his surgery." - Michael</li>
+          <li>"She was attentive and made sure all of his needs were met." - Julia</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Olivia Martinez')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Mia Harris</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 963</p>
+      <p><strong>Available Areas:</strong> Oakridge, Valleyview</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 18 reviews)</p>
+        <ul class="reviews">
+          <li>"Mia was very professional and caring. Excellent nurse." - Daniel</li>
+          <li>"She helped with post-operative care and was very thorough." - Linda</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Mia Harris')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Sophia Walker</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 964</p>
+      <p><strong>Available Areas:</strong> Lakeside, Sunnyside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">5.0</span> (Based on 35 reviews)</p>
+        <ul class="reviews">
+          <li>"Sophia was the perfect nurse. My father was very comfortable under her care." - David</li>
+          <li>"I appreciate her kindness and skill. Truly the best in the field!" - Emma</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Sophia Walker')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 6: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Ava Turner</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 965</p>
+      <p><strong>Available Areas:</strong> Hillcrest, Broadwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 29 reviews)</p>
+        <ul class="reviews">
+          <li>"Ava is extremely knowledgeable and helped my grandmother with her recovery." - Rachel</li>
+          <li>"She provided excellent home care. Highly recommended!" - Tom</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Ava Turner')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 7: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Isabella Johnson</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 966</p>
+      <p><strong>Available Areas:</strong> Forestview, Crestwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 33 reviews)</p>
+        <ul class="reviews">
+          <li>"Isabella is so kind and dedicated. She made the healing process easier." - Grace</li>
+          <li>"Wonderful service, would recommend her to anyone needing home nursing care." - Ethan</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Isabella Johnson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 8: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Noah Clark</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 967</p>
+      <p><strong>Available Areas:</strong> Greenview, Oakfield</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 24 reviews)</p>
+        <ul class="reviews">
+          <li>"Noah was very helpful with my post-surgery care. Highly recommend!" - Emma</li>
+          <li>"Caring and efficient. Would hire again for future needs." - Jacob</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Noah Clark')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 9: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Lucas Moore</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 968</p>
+      <p><strong>Available Areas:</strong> Pinehill, Greenvalley</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 19 reviews)</p>
+        <ul class="reviews">
+          <li>"Lucas was attentive and professional. Great service!" - Olivia</li>
+          <li>"He made sure I was comfortable throughout the entire process." - Ava</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Lucas Moore')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 10: Nurse Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Lily Wright</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 969</p>
+      <p><strong>Available Areas:</strong> Riverdale, Briarwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 32 reviews)</p>
+        <ul class="reviews">
+          <li>"Lily was fantastic. Highly skilled and compassionate." - Olivia</li>
+          <li>"She was always available for any needs. A true professional." - Liam</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Lily Wright')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

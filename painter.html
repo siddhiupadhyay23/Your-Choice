@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painter Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>Painter Service Providers</h1>
+
+    <!-- Example 1: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Atul Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 910</p>
+      <p><strong>Available Areas:</strong> Downtown, Oakwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 20 reviews)</p>
+        <ul class="reviews">
+          <li>"Fantastic job! The walls look amazing!" - Sara</li>
+          <li>"Great attention to detail, highly recommend!" - Mukesh</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Peter Johnson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 2: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Suresh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 911</p>
+      <p><strong>Available Areas:</strong> Riverside, Pinehill</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 18 reviews)</p>
+        <ul class="reviews">
+          <li>"Very professional, painted my house beautifully!" - Emily</li>
+          <li>"Would definitely hire again for more painting projects." - Jiya</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('David Smith')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 3: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Rajesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 912</p>
+      <p><strong>Available Areas:</strong> Greenhill, Oakwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 25 reviews)</p>
+        <ul class="reviews">
+          <li>"Impressive work! The house looks stunning now." - Jiva</li>
+          <li>"Very detail-oriented, exceeded my expectations." - Juhi</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Laura Miller')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Ashok Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 913</p>
+      <p><strong>Available Areas:</strong> Brookside, Northgate</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 15 reviews)</p>
+        <ul class="reviews">
+          <li>"Great painter, completed the job on time!" - Juli</li>
+          <li>"He did an excellent job on the exterior of the house." - Krish</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Robert Brown')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Jignesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 914</p>
+      <p><strong>Available Areas:</strong> Hilltop, Riverside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.5</span> (Based on 17 reviews)</p>
+        <ul class="reviews">
+          <li>"Very efficient and friendly painter." - Shivam </li>
+          <li>"Highly recommend for any residential painting job." - Ruchita</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Jessica Lee')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 6: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Yatin Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 915</p>
+      <p><strong>Available Areas:</strong> Maple Valley, Oak Park</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 22 reviews)</p>
+        <ul class="reviews">
+          <li>"Did an amazing job on our living room. The finish was perfect!" - Avika</li>
+          <li>"We are so happy with the results, very professional." - Jay</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 7: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Sanjay Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 916</p>
+      <p><strong>Available Areas:</strong> Crestwood, Sunset</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 19 reviews)</p>
+        <ul class="reviews">
+          <li>"Repainted my entire apartment. Great value for the price!" - Jayesh</li>
+          <li>"Highly skilled and precise painter." - Chintan</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 8: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Ketan Bhai</b></h2>
+      <p><strong>Contact Number:</strong> +1 234 567 917</p>
+      <p><strong>Available Areas:</strong> Westside, Oakridge</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 30 reviews)</p>
+        <ul class="reviews">
+          <li>"Perfect job on the exterior of my home. Looks brand new!" - Joy</li>
+          <li>"Best painting service in town! Very reliable and neat." - Anna</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+    
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 9: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Gopal Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 918</p>
+      <p><strong>Available Areas:</strong> Ridgeway, Sunnydale</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 21 reviews)</p>
+        <ul class="reviews">
+          <li>"My house looks amazing after the paint job!" -  Surendra </li>
+          <li>"Professional and courteous, will hire again!" - Tiya</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 10: Painter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Girish Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 919</p>
+      <p><strong>Available Areas:</strong> Willowbrook, Fairview</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.4</span> (Based on 16 reviews)</p>
+        <ul class="reviews">
+          <li>"Repainted my kitchen cabinets. They look great!" - Isha</li>
+          <li>"Fast and efficient service, would recommend." - Fezal</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

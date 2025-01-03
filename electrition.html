@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrician Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>Electrician Service Providers</h1>
+
+    <!-- Example 1: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: William Johnson</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 910</p>
+      <p><strong>Available Areas:</strong> Downtown, Maplewood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 15 reviews)</p>
+        <ul class="reviews">
+          <li>"Fixed our electrical wiring quickly. Great job!" - Sarah</li>
+          <li>"Very knowledgeable and professional. Highly recommend!" - Mike</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 2: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: David Brown</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 911</p>
+      <p><strong>Available Areas:</strong> Riverside, Pinehill</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 12 reviews)</p>
+        <ul class="reviews">
+          <li>"Came on time and fixed our lighting issue without delay." - Emily</li>
+          <li>"Very professional and thorough with the repairs." - Tom</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 3: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Thomas Lee</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 912</p>
+      <p><strong>Available Areas:</strong> Greenhill, Oakwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 14 reviews)</p>
+        <ul class="reviews">
+          <li>"Rewired our house, very quick and efficient!" - Laura</li>
+          <li>"Excellent work on the electrical panel installation." - John</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Jennifer Davis</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 913</p>
+      <p><strong>Available Areas:</strong> Northgate, Westside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 18 reviews)</p>
+        <ul class="reviews">
+          <li>"Fixed all my electrical issues at a very reasonable price." - Mary</li>
+          <li>"Highly skilled and professional. Will hire again!" - Kevin</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Mark Harris</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 914</p>
+      <p><strong>Available Areas:</strong> Crestwood, Elm Street</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.4</span> (Based on 11 reviews)</p>
+        <ul class="reviews">
+          <li>"Fixed the wiring issues in my garage. Excellent service!" - Sam</li>
+          <li>"Prompt service, but I was hoping for more affordable rates." - Rachel</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 6: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Michael Green</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 915</p>
+      <p><strong>Available Areas:</strong> Maple Valley, Oak Park</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.5</span> (Based on 9 reviews)</p>
+        <ul class="reviews">
+          <li>"Installed new lighting in my kitchen, very happy with the results." - Anna</li>
+          <li>"Reliable service. Will definitely contact again for future work." - Steve</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 7: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Susan Walker</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 916</p>
+      <p><strong>Available Areas:</strong> Hilltop, Sunset</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 10 reviews)</p>
+        <ul class="reviews">
+          <li>"Fixed the breaker switch quickly and efficiently." - Linda</li>
+          <li>"Very skilled, helped me with an electrical fault in no time." - Peter</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 8: Electrician Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Charles Scott</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 917</p>
+      <p><strong>Available Areas:</strong> Ridgeway, Riverstone</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 13 reviews)</p>
+        <ul class="reviews">
+          <li>"Installed a new circuit breaker panel for me. Great job!" - David</li>
+          <li>"On time and very efficient with troubleshooting electrical issues." - Tina</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('this')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

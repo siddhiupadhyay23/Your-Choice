@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<style>
+     body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    height: 100%;
+}
+
+.account-container {
+    width: 300px;
+    height: 895px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-header {
+    text-align: left;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    margin-bottom: 20px;
+    background-color: rgb(171, 230, 187);
+}
+
+.account-header h1 {
+    padding-top: 7%;
+    margin: 0;
+    font-size: 45px;
+    font-weight: bold;
+    color: #333;
+}
+
+.phone-number {
+    padding-top: 3%;
+    margin: 5px 0 0;
+    font-size: 20px;
+    padding-bottom: 3%;
+    color: #555;
+}
+
+.account-options {
+    list-style: none;
+    padding-top: 10%;
+    padding-left: 1%;
+}
+
+.account-options li {
+    margin: 10px 0;
+    padding-top: 5%;
+}
+
+.account-options a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding-top: 10%;
+}
+
+
+</style>
+<body>
+    <div class="account-container">
+        <div class="account-header">
+            <h1>Your Profile</h1>
+            <p class="phone-number">9376094456</p>
+        </div>
+        <ul class="account-options">
+            <li><a href="#my-orders">My Orders</a></li>
+            <li><a href="#cart">Cart Items</a></li>
+            <li><a href="#saved-address">Saved Address</a></li>
+            <li><a href="#theme">Theme</a></li>
+            <li><a href="#Track">Track your order</a></li>
+            <li><a href="#account-privacy">Account Privacy</a></li>
+            <li><a href="#logout">Log Out</a></li>
+        </ul>
+    </div>
+</body>
+<script src="profile.js"></script>
+</html>

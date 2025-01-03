@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handyman Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>Handyman Service Providers</h1>
+
+    <!-- Example 1: Handyman Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Jayesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 920</p>
+      <p><strong>Available Areas:</strong> Central Park, Riverdale</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 15 reviews)</p>
+        <ul class="reviews">
+          <li>"Very skilled and helpful. Fixed all issues in no time!" - Lisa</li>
+          <li>"Reliable and efficient. Highly recommended!" - Mark</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('John Anderson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 2: Handyman Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Kirit Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 921</p>
+      <p><strong>Available Areas:</strong> Springfield, Westwood</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 18 reviews)</p>
+        <ul class="reviews">
+          <li>"Prompt and did a fantastic job with the repairs." - Anneka</li>
+          <li>"Highly professional and trustworthy." - Mihika</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Chris Evans')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 3: Handyman Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Lala Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 922</p>
+      <p><strong>Available Areas:</strong> Maple Ridge, Hillside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 22 reviews)</p>
+        <ul class="reviews">
+          <li>"Quick and efficient! Fixed everything with great attention to detail." - Jiya</li>
+          <li>"Very knowledgeable and polite. Will definitely hire again!" - Kajal</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Sarah Thompson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Handyman Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Vinod Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 923</p>
+      <p><strong>Available Areas:</strong> Downtown, Lakeside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.5</span> (Based on 12 reviews)</p>
+        <ul class="reviews">
+          <li>"Great service! Fixed my leaky faucet in no time." - Tom</li>
+          <li>"Fast and reliable. Really appreciated the quick response." - Nina</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Mike Johnson')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Handyman Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Emily Harris</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 924</p>
+      <p><strong>Available Areas:</strong> Valleyview, Riverside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 25 reviews)</p>
+        <ul class="reviews">
+          <li>"Did an amazing job assembling my furniture." - Linda</li>
+          <li>"Reliable and efficient. Will definitely hire again!" - Robert</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Emily Harris')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

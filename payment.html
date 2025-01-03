@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+    }
+
+    .container {
+        width: 100%;
+        height: 350px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .payment-methods {
+        display: flex;
+        padding-top: 3%;
+        font-size: 35px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .payment-method {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .payment-method input {
+        margin-right: 10px;
+    }
+
+    .payment-method img {
+        width: 50px;
+        height: auto;
+    }
+
+    .payment-details {
+        display: none;
+        margin-top: 20px;
+    }
+
+    .credit-card-form,
+    .paypal-form,
+    .cod-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="text"], input[type="number"], input[type="email"] {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .submit-btn:disabled {
+        background-color: #ccc;
+    }
+
+    .payment-methods img {
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Select Payment Method</h2>
+        <div class="payment-methods">
+            <label class="payment-method">
+                <input type="radio" name="payment-method" value="credit-card" id="credit-card">
+                <img src="https://bsmedia.business-standard.com/_media/bs/img/article/2024-03/12/full/1710223554-0545.jpg" alt="Credit Card">
+                Credit Card
+            </label>
+            <label class="payment-method">
+                <input type="radio" name="payment-method" value="paypal" id="paypal">
+                <img src="https://i.pcmag.com/imagery/reviews/068BjcjwBw0snwHIq0KNo5m-15.fit_lim.size_1050x591.v1602794215.png" alt="PayPal">
+                PayPal
+            </label>
+            <label class="payment-method">
+                <input type="radio" name="payment-method" value="paypal" id="paypal">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2CSqpGYQ7Iky4lEgese70vb6IylEV3DGedg&s" alt="GooglePay">
+                Google Pay
+            </label>
+            <label class="payment-method">
+                <input type="radio" name="payment-method" value="cod" id="cod">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2022/7/WY/CN/OL/31988493/cash-on-delivery-500x500.jpg" alt="Cash on Delivery">
+                Cash on Delivery
+            </label>
+        </div>
+
+        <div class="payment-details">
+            <form id="payment-form">
+                <div class="credit-card-form" id="credit-card-form">
+                    <label for="card-number">Card Number:</label>
+                    <input type="number" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+                    <label for="expiry-date">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="number" id="cvv" name="cvv" placeholder="CVV" required>
+                </div>
+
+                <div class="paypal-form" id="paypal-form">
+                    <label for="paypal-email">PayPal Email:</label>
+                    <input type="email" id="paypal-email" name="paypal-email" placeholder="Enter your PayPal email" required>
+                </div>
+
+                <div class="cod-form" id="cod-form">
+                    <p>You will pay cash on delivery. No further details required.</p>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+        const paymentDetails = document.querySelector('.payment-details');
+        const creditCardForm = document.getElementById('credit-card-form');
+        const paypalForm = document.getElementById('paypal-form');
+        const codForm = document.getElementById('cod-form');
+        const submitButton = document.getElementById('submit-btn');
+        const paymentForm = document.getElementById('payment-form');
+
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', function () {
+                paymentDetails.style.display = 'block';
+                creditCardForm.style.display = 'none';
+                paypalForm.style.display = 'none';
+                codForm.style.display = 'none';
+
+                if (this.value === 'credit-card') {
+                    creditCardForm.style.display = 'block';
+                } else if (this.value === 'paypal') {
+                    paypalForm.style.display = 'block';
+                } else if (this.value === 'cod') {
+                    codForm.style.display = 'block';
+                }
+            });
+        });
+
+        // Disable submit button until form is filled out
+        paymentForm.addEventListener('input', function () {
+            const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
+            if (selectedMethod) {
+                if (selectedMethod.value === 'credit-card') {
+                    const cardNumber = document.getElementById('card-number').value;
+                    const expiryDate = document.getElementById('expiry-date').value;
+                    const cvv = document.getElementById('cvv').value;
+                    submitButton.disabled = !(cardNumber && expiryDate && cvv);
+                } else if (selectedMethod.value === 'paypal') {
+                    const paypalEmail = document.getElementById('paypal-email').value;
+                    submitButton.disabled = !paypalEmail;
+                } else {
+                    submitButton.disabled = false; // Cash on Delivery requires no extra input
+                }
+            } else {
+                submitButton.disabled = true;
+            }
+        });
+
+        paymentForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Payment successful!');
+            // You can send form data to your server here
+        });
+    </script>
+</body>
+</html>

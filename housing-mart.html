@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Mart</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #6fa3ef, #ffffff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 128, 0, 0.2), rgba(255, 255, 255, 0.2));
+            animation: animatedLines 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes animatedLines {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 50px 50px;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+    font-size: 4em;
+    font-weight: 800;
+    color: #003366; /* Updated to deep green */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px rgba(200, 255, 200, 0.6),
+                 6px 6px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+
+.header p {
+    color: #003366; /* Deep blue color */
+    font-size: 1.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: #66bb6a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-icon {
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #a5d6a7, #81c784);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            transform: rotate(-5deg);
+        }
+
+        .category-card:hover .category-icon {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .category-title {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #003366; /* Updated to deep blue */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+
+        .category-description {
+            font-size: 1em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3em;
+            }
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Housing-Mart</h1>
+            <p>Reliable Home Services at Your Doorstep</p>
+        </header>
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon"><a href="housemaids.html">🧹</div></a>
+                <h3 class="category-title">Maid</h3>
+                <p class="category-description">Professional cleaning services for your home</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="carpenter.html">🪚</div></a>
+                <h3 class="category-title">Carpenter</h3>
+                <p class="category-description">Custom woodwork and furniture repair</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="plumber.html">🔧</div></a>
+                <h3 class="category-title">Plumber</h3>
+                <p class="category-description">Expert plumbing services for all your needs</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="electrition.html">⚡</div></a>
+                <h3 class="category-title">Electrician</h3>
+                <p class="category-description">Electrical repairs and installations</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="painter.html">🎨</div></a>
+                <h3 class="category-title">Painter</h3>
+                <p class="category-description">Interior and exterior painting services</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="handyman.html">🛠</div></a>
+                <h3 class="category-title">Handyman</h3>
+                <p class="category-description">General home repairs and maintenance</p>
+            </div>
+
+            <!-- Additional Categories -->
+            <div class="category-card">
+                <div class="category-icon"><a href="gardner.html">🌿</div></a>
+                <h3 class="category-title">Gardener</h3>
+                <p class="category-description">Landscaping and garden maintenance</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="pestControl.html">🐜</div></a>
+                <h3 class="category-title">Pest Control</h3>
+                <p class="category-description">Extermination and pest management services</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon"><a href="nurse.html">👩‍⚕</div></a>
+                <h3 class="category-title">Nurses</h3>
+                <p class="category-description">Professional healthcare services at your doorstep</p>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

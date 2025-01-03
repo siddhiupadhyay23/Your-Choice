@@ -1,0 +1,361 @@
+body {
+    height: auto;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgb(246, 246, 246);
+    padding: 10px 15px 33px 15px;
+    border-bottom: 2px solid #ddd;
+    font-size:25px;
+    justify-content: space-between;
+}
+.header-a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-container {
+    position: relative;
+    width: 650px;
+    padding-top: 2.32%;
+  }
+  
+#search{
+    position: relative;
+    width: 750px;
+    padding-top: 0.2rem;
+    border: 1px solid bold #ccc;
+    border-radius: 5px;
+    font-size: 27px;
+  }
+  
+.suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+.suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  
+.location {
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 2.5%;
+    padding: 1px 5px 1px 5px;
+}
+
+.profile {
+    font-size: 27px;
+    font-weight: bold;
+    padding: 10px 10px;
+    padding-right: 120px;
+}
+
+.navigation-bar {
+    padding-top: 15%;
+    background-color: rgb(246, 246, 246);
+    padding: 5px 40px;
+    padding-bottom: 0.12%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.navigation-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.navigation-bar ul li {
+    display: inline;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+nav ul li a:hover {
+    color: black;
+    text-decoration: none;
+}
+.logo-section img {
+    font-size: 20px;
+    height: 130px;
+    width: 160px;
+    font-weight: bold;
+    padding-top: 2%;
+}
+
+.authorize {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.authorize button {
+    padding: 10px 20px;
+    font-size: 27px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.authorize button:hover {
+    background-color: #0056b3;
+}
+main {
+    text-align: center;
+    height: 80%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
+}
+
+
+.tagline {
+    font-size: 43px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 550;
+    color: black;
+    padding-top: 4.5%;
+    padding-bottom: 8%;
+    padding-left: 8%;
+    text-align: left;
+}
+
+.animation {
+    background-color: white;
+    height: 350px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #777;
+}
+
+.tagline button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color:rgb(93, 151, 108);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+footer {
+    padding-top: 10%;
+}
+ 
+.area {
+    background-color: rgb(171, 230, 187);
+    display: flex;
+    max-width: 1300px;
+    width: 100%;
+    padding-top: 0.2%;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 30px 50px 35px 50px;
+    flex-basis: 38%;
+}
+.intro {
+    font-size: 40px;
+    text-align: left;
+    height: 360px;
+    padding-top: 1rem;
+}
+
+.text {
+    font-size: 57px;
+    padding-left: 6%;
+    padding-top: 10%;
+    padding-bottom: 2%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+.heading {
+    font-size: 40px;
+    padding: 40px 35px 40px 35px;
+}
+.content {
+    font-size: 25px;
+    padding: 15px 25px 15px 25px;
+    }
+ 
+    
+.part1{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 30px 50px 35px 50px;
+    flex-basis: 38%;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+}
+.part2 {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 30px 50px 35px 50px;
+    flex-basis: 38%;
+    padding-bottom: 4%;
+}
+.part3 {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 30px 50px 35px 50px;
+    flex-basis: 38%;
+    padding-bottom: 4%;
+}
+.card1 {
+    background-color: beige;
+    height: 260px;
+    width: 50%;
+    border-radius: 30px;
+    transition: opacity 0.5s ease, transform 0.5s ease; 
+    animation: appear 1s linear; 
+}
+.card2{
+    background-color: rgb(152, 206, 230);
+    height: 260px;
+    width: 48%;
+    border-radius: 30px;
+}
+.card3 {
+    background-color: rgb(176, 227, 214);
+    height: 350px;
+    width: 40%;
+    border-radius: 30px;
+}
+.card4 {
+    background-color: rgb(241, 201, 208);
+    height: 350px;
+    width: 58%;
+    border-radius: 30px;
+}
+.card5 {
+    background-color: rgb(242, 218, 198);
+    height: 350px;
+    width: 49%;
+    border-radius: 30px;
+}
+.card6 {
+    background-color: rgb(234, 195, 237);
+    height: 350px;
+    width: 49%;
+    border-radius: 30px;
+}
+
+.support {
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ccc;
+    height: 350px;
+    padding-top: 5%;
+    background-color: #01403d;
+    margin: auto;
+    padding-left: 1.8%;
+}
+.support button{
+    padding-top: 25;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    gap: 10px;
+    transition: background-color 0.3s; 
+}
+.track img {
+    height: 650px;
+    width: 100%;
+    padding-bottom: 5%;
+}
+.track-title {
+    font-size: 60px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+}
+.Cycle {
+    height: 250px;
+    width: 100%;
+    padding-bottom: 18%;
+}
+.Cycle img {
+    height: 700px;
+    width: 100%;
+    padding-bottom: 18%;
+}
+.Cycle-title {
+    font-size: 60px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+}
+.about{
+    display: flex;
+    background-color:white;
+    color: black;
+    font-size: 25px;
+    text-align: left;
+    padding-top: 2%;
+    padding-right: 5%;
+}
+

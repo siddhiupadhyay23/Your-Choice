@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .sidebar {
+      width: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 16px;
+      padding-bottom: 25;
+    }
+
+    .sidebar h3 {
+      margin-top: 1;
+      padding-left: 3%;
+      font-size: 30px;
+      color: #333;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      display:flex;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 16px;
+    }
+
+    .main-content h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .product-info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #e53935;
+    }
+
+    .price .original {
+      text-decoration: line-through;
+      font-size: 14px;
+      color: #999;
+      margin-left: 8px;
+    }
+
+    .add-btn {
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .add-btn:hover {
+      background: #43a047;
+    }
+
+    /* Cart icon styles */
+    .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-count {
+            background: #e53935;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Cart sidebar styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .remove-item {
+            background: #e53935;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+      
+  </style>
+</head>
+<body>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" onclick="toggleCart()">
+    #icon# Cart <span class="cart-count">0</span>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items">
+        <!-- Cart items will be added here dynamically -->
+    </div>
+    <div class="cart-total">
+        Total: ₹<span id="cart-total">0</span>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" onclick="toggleCart()"></div>
+
+  <div class="sidebar">
+    <h3>Categories</h3>
+    <ul>
+      <li>Fresh Vegetables</li>
+      <li>Fresh Fruits</li>
+      <li>Mangoes & Melons</li>
+      <li>Seasonal</li>
+      <li>Exotics</li>
+      <li>Freshly Cut & Sprouts</li>
+      <li>Frozen Veg</li>
+      <li>Leafies & Herbs</li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h2>Buy Fresh Vegetables Online</h2>
+    <div class="product-grid">
+<!-- Product Card 1 -->
+<div class="product-card">
+    <img src="https://www.magnikart.com/wp-content/uploads/2022/10/Thums-Up-Party-Pack-2.25-L-Bottle1.jpg" alt="Thums Up">
+    <div class="product-info">
+      <h4>Thums Up</h4>
+      <p>750 ml</p>
+      <div class="price">&#8377;45</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://i5.walmartimages.com/asr/047907eb-3444-4870-86a3-943544502e25_1.99328ff9f9197c2c7e2b2864e7f28e95.jpeg" alt="Sprite Lime">
+    <div class="product-info">
+      <h4>Sprite Lime</h4>
+      <p>750 ml</p>
+      <div class="price">&#8377;45</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://chalosgrocery.com/assets/uploads/3114244c9e262162560f0655b45e12c4.jpg" alt="Coca-cola">
+    <div class="product-info">
+      <h4>Coca-cola</h4>
+      <p>2.25 l</p>
+      <div class="price">&#8377;96</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://tse3.mm.bing.net/th?id=OIP.iYig7kjU0SHVfy3UbHil8QHaLj&pid=Api&P=0&h=180" alt="Mountain Dew">
+    <div class="product-info">
+      <h4>Mountain Dew</h4>
+      <p>750 ml</p>
+      <div class="price">&#8377;40</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://www.jiomart.com/images/product/600x600/490001987/real-fruit-power-mixed-fruit-juice-1-l-product-images-o490001987-p490001987-0-202203170837.jpg" alt="Real Mixed Fruit juice">
+    <div class="product-info">
+      <h4>Real Mixed fruit juice</h4>
+      <p>1 l</p>
+      <div class="price">&#8377;117</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://store.pareaonline.com/uploads/prod_file/paper-boat-fruit-juice-chilli-guava-drink-200-ml.jpg" alt="Paper boat Guava juice">
+    <div class="product-info">
+      <h4>paper boat Guava juice</h4>
+      <p>600 ml</p>
+      <div class="price">&#8377;45</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://cdn.shopify.com/s/files/1/0251/1618/0535/products/Mogu-Mogu-Lychee-with-Nata-de-Coco-320ml-1_2095x2095.png?v=1644350857" alt="Mogu Mogu(lychi)">
+    <div class="product-info">
+      <h4>Mogu Mogu(lychi)</h4>
+      <p></p>
+      <div class="price">&#8377;70</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+   <!-- Product Card 1 -->
+   <div class="product-card">
+    <img src="https://s3.amazonaws.com/images.ecwid.com/images/32880331/2039359753.jpg" alt="Frooti">
+    <div class="product-info">
+      <h4>Frooti</h4>
+      <p>125 ml</p>
+      <div class="price">&#8377;12</div>
+      <button class="add-btn">Add</button>
+    </div>
+  </div>
+
+
+
+  <!-- Add more product cards as needed -->
+</div>
+</div>
+
+<script>
+let cart = [];
+
+// Toggle cart sidebar
+function toggleCart() {
+    document.querySelector('.cart-sidebar').classList.toggle('active');
+    document.querySelector('.overlay').classList.toggle('active');
+}
+
+// Add to cart function
+function addToCart(button) {
+    const productCard = button.closest('.product-card');
+    const product = {
+        id: Date.now(), // Using timestamp as unique ID
+        name: productCard.querySelector('h4').textContent,
+        price: parseFloat(productCard.querySelector('.price').textContent.replace('₹', '')),
+        image: productCard.querySelector('img').src,
+        weight: productCard.querySelector('p').textContent,
+        quantity: 1
+    };
+
+    const existingItem = cart.find(item => item.name === product.name);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push(product);
+    }
+
+    updateCartDisplay();
+}
+
+// Update quantity
+function updateQuantity(id, delta) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+            cart = cart.filter(item => item.id !== id);
+        }
+        updateCartDisplay();
+    }
+}
+
+// Remove item from cart
+function removeItem(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCartDisplay();
+}
+
+// Update cart display
+function updateCartDisplay() {
+    const cartItems = document.querySelector('.cart-items');
+    const cartCount = document.querySelector('.cart-count');
+    const cartTotal = document.getElementById('cart-total');
+
+    // Update cart count
+    cartCount.textContent = cart.length;
+
+    // Update cart items
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <p>${item.weight}</p>
+                <div class="cart-item-quantity">
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button class="remove-item" onclick="removeItem(${item.id})">Remove</button>
+                </div>
+                <div class="price">₹${(item.price * item.quantity).toFixed(2)}</div>
+            </div>
+        </div>
+        

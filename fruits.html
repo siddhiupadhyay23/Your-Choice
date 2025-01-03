@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Product Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+header {
+    background-color: rgb(246, 246, 246);
+    padding: 10px 15px 33px 15px;
+    border-bottom: 2px solid #ddd;
+    font-size:20px;
+    justify-content: space-between;
+}
+.header-a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-container {
+    position: relative;
+    width: 600px;
+    padding-top: 0.2rem;
+  }
+  
+#search{
+    position: relative;
+    width: 600px;
+    padding-top: 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+  }
+  
+.suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+.suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  
+.location {
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 2.5%;
+    padding: 1px 5px 1px 5px;
+}
+
+.profile {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 10px;
+    padding-right: 120px;
+}
+
+.navigation-bar {
+    padding-top: 15%;
+    background-color: rgb(246, 246, 246);
+    padding: 5px 40px;
+    padding-bottom: 0.2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-bar ul li {
+    display: inline;
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: black;
+}
+.logo-section img {
+    font-size: 20px;
+    height: 90px;
+    width: 130px;
+    font-weight: bold;
+}
+
+.authorize {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.authorize button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.authorize button:hover {
+    background-color: #0056b3;
+}
+    .sidebar {
+      width: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 16px;
+      padding-bottom: 25;
+    }
+
+    .sidebar h3 {
+      margin-top: 1;
+      padding-left: 3%;
+      font-size: 30px;
+      color: #333;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      display:flex;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 16px;
+    }
+
+    .main-content h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .product-info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #e53935;
+    }
+
+    .price .original {
+      text-decoration: line-through;
+      font-size: 14px;
+      color: #999;
+      margin-left: 8px;
+    }
+
+    .add-btn {
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .add-btn:hover {
+      background: #43a047;
+    }
+
+    /* Cart icon styles */
+    .cart-icon {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-count {
+            background: #e53935;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Cart sidebar styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .remove-item {
+            background: #e53935;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+      
+  </style>
+</head>
+<body>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" onclick="toggleCart()">
+    <i class="fa-solid fa-cart-shopping"></i> <span class="cart-count">0</span>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items">
+        <!-- Cart items will be added here dynamically -->
+    </div>
+    <div class="cart-total">
+        Total: ₹<span id="cart-total">0</span>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" onclick="toggleCart()"></div>
+
+<header>
+    <div class="header-a">
+        <div class="logo-section">
+            <img src="logo.png">
+        </div>
+        <div class="location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Your Location</span>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search...">
+            <ul id="suggestions"></ul>
+            <script src="web.js"></script>
+        </div>
+        
+        
+        <div class="authorize">
+            <button class="btn3"><a href="index.html" style="color: white;">Home</a></button>
+            <button class="btn1"><a href="login.html" style="color: white;">Log-In</a></button>
+            <button class="btn2"><a href="Sign-in.html" style="color: white;">Sign-Up</a></button>
+        </div>
+        <div class="profile">
+            <i class="fa-solid fa-user"></i>
+            <a href="profile.html">Your Profile</a>
+           
+            
+        </div>
+    </div>
+    <div class="navigation-bar">
+        <ul>
+            <li><a href="newspaper.html">Newspapers</a></li>
+            <li><a href="playcards.html">Vegetables and fruits</a></li>
+            <li><a href="#">Dairy products</a></li>
+            <li><a href="#">Cold drinks and juices</a></li>
+            <li><a href="#">Daily Breakfast</a></li>
+            <li><a href="#">Munchies</a></li>
+            <li><a href="#">Ice-creams and desserts</a></li>
+            <li><a href="#">Bakkery and biscuits</a></li>
+            <li><a href="#">Tea and Coffee</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+</div>
+</header>
+  
+
+      <div class="main-content">
+        <h2>Buy Fresh Fruits Online</h2>
+        <div class="product-grid">
+          <!-- Product Card 1 -->
+          <div class="product-card">
+            <img src="https://www.lankaprincess.de/wp-content/uploads/2016/08/apples.jpg" alt="Apple">
+            <div class="product-info">
+              <h4>Apple </h4>
+              <p>2 pieces (400 - 500 g)</p>
+              <div class="price">&#8377;107 <span class="original">&#8377;125</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card">
+            <img src="https://images.pexels.com/photos/693794/pexels-photo-693794.jpeg?cs=srgb&dl=abundance-apples-close-up-693794.jpg&fm=jpg" alt="Green Apple">
+            <div class="product-info">
+              <h4>Green Apple </h4>
+              <p>2 pieces (300 - 400 g) (</p>
+              <div class="price">&#8377;124 <span class="original">&#8377;145</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card">
+            <img src="http://upload.wikimedia.org/wikipedia/commons/1/1c/Bananas_white_background.jpg" alt="Banana">
+            <div class="product-info">
+              <h4>Banana </h4>
+              <p>Half Dozen (6 pieces) (</p>
+              <div class="price">&#8377;26 <span class="original">&#8377;25</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="product-card">
+            <img src="https://www.vietnamonline.com/media/uploads/froala_editor/images/VNO-Guava1.jpg" alt="Guava">
+            <div class="product-info">
+              <h4>Guava </h4>
+              <p>500 g (</p>
+              <div class="price">&#8377;45 <span class="original">&#8377;60</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="product-card">
+            <img src="https://www.hdwallpapersfreedownload.com/uploads/large/fruits/black-grapes-hd-wallpaper.jpg" alt="Black Grapes">
+            <div class="product-info">
+              <h4>Black Grapes </h4>
+              <p>500 g (</p>
+              <div class="price">&#8377;129 <span class="original">&#8377;135</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="product-card">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2021/7/FB/BP/VT/40479174/fresh-green-grapes.jpg" alt="Green Grapes">
+            <div class="product-info">
+              <h4>Green Grapes </h4>
+              <p>500 g (</p>
+              <div class="price">&#8377;90 <span class="original">&#8377;105</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+           <div class="product-card">
+            <img src="http://pngimg.com/uploads/orange/orange_PNG786.png" alt="Orange">
+            <div class="product-info">
+              <h4>Orange </h4>
+              <p>250 g </p>
+              <div class="price">&#8377;40 <span class="original">&#8377;57</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div class="product-card">
+            <img src="https://healthjade.com/wp-content/uploads/2017/10/blackberry.jpg" alt="Blackberry">
+            <div class="product-info">
+              <h4>Blackberry </h4>
+              <p>125 g </p>
+              <div class="price">&#8377;175 <span class="original">&#8377;225</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 9 -->
+          <div class="product-card">
+            <img src="https://static.vecteezy.com/system/resources/previews/004/182/507/large_2x/sugarcane-on-white-background-photo.jpg" alt="Sugarcane Stick (Black)">
+            <div class="product-info">
+              <h4>Sugarcane Stick (Black) </h4>
+              <p>1 piece </p>
+              <div class="price">&#8377;34 <span class="original">&#8377;57</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 10 -->
+          <div class="product-card">
+            <img src="https://thumbs.dreamstime.com/b/kiwi-green-fresh-seasonal-fruit-quality-35631257.jpg" alt="Kiwi - Green">
+            <div class="product-info">
+              <h4>KIwi - Green </h4>
+              <p>1 packet (3 pieces) </p>
+              <div class="price">&#8377;100 <span class="original">&#8377;120</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 11 -->
+          <div class="product-card">
+            <img src="https://images.healthshots.com/healthshots/en/uploads/2022/01/06132346/chikoo.jpg" alt="Chikoo">
+            <div class="product-info">
+              <h4>Chikoo </h4>
+              <p>450 - 500 g </p>
+              <div class="price">&#8377;72 <span class="original">&#8377;95</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 12 -->
+          <div class="product-card">
+            <img src="http://www.homenaturalcures.com/wp-content/uploads/strawberry.jpg" alt="Strawberry">
+            <div class="product-info">
+              <h4>Strawberry </h4>
+              <p>1 pack (200 - 220 g) </p>
+              <div class="price">&#8377;77 <span class="original">&#8377;100</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 13 -->
+          <div class="product-card">
+            <img src="https://www.tasteofhome.com/wp-content/uploads/2019/02/pineapples_1283638660.jpg" alt="Pineapple">
+            <div class="product-info">
+              <h4>Pineapple </h4>
+              <p>1 piece (800-900 g) </p>
+              <div class="price">&#8377;64 <span class="original">&#8377;70</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 14 -->
+          <div class="product-card">
+            <img src="https://fthmb.tqn.com/C06HC5JiZ0ReXgAr002TyPSv6Bs=/4288x2848/filters:fill(auto,1)/sugar-cane-56a8a7c83df78cf7729f6fb6.jpg" alt="Sugarcane Stick (Green)">
+            <div class="product-info">
+              <h4>Sugarcane Stick (Green) </h4>
+              <p>1 piece </p>
+              <div class="price">&#8377;29 <span class="original">&#8377;50</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 15 -->
+          <div class="product-card">
+            <img src="https://thumbs.dreamstime.com/b/organic-yellow-pear-fruits-natural-pear-harvest-wood-texture-background-sweet-tasty-ripe-yellow-pear-fruits-healthy-organic-122401237.jpg" alt="Pear">
+            <div class="product-info">
+              <h4>Pear </h4>
+              <p>250 g </p>
+              <div class="price">&#8377;58 <span class="original">&#8377;70 </span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 16 -->
+          <div class="product-card">
+            <img src="https://4.imimg.com/data4/SE/HP/MY-12162059/tender-coconut-1000x1000.jpeg" alt="Tender Coconut">
+            <div class="product-info">
+              <h4>Tender Coconut </h4>
+              <p>1 piece (250 - 300 ml) </p>
+              <div class="price">&#8377;48 <span class="original">&#8377;60</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 17 -->
+          <div class="product-card">
+            <img src="https://img2.exportersindia.com/product_images/bc-full/2019/10/6063625/green-sweet-lime-1571219401-5118560.jpeg" alt="Sweet Lime">
+            <div class="product-info">
+              <h4>Sweet Lime </h4>
+              <p>400 - 500 g </p>
+              <div class="price">&#8377;38 <span class="original">&#8377;55</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 18 -->
+          <div class="product-card">
+            <img src="https://kiansengfp.com.sg/wp-content/uploads/2021/03/26.-red-dragonfruit.jpg" alt="Dragon Fruit (Red)">
+            <div class="product-info">
+              <h4>Dragon Fruit (Red) </h4>
+              <p>1 piece (300 - 400 g) </p>
+              <div class="price">&#8377;98 <span class="original">&#8377;110</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 19 -->
+          <div class="product-card">
+            <img src="https://5.imimg.com/data5/DM/BM/MY-46595757/papaya-281kg-29.png" alt="Papaya">
+            <div class="product-info">
+              <h4>Papaya </h4>
+              <p>1 piece (0.75 - 1.50) kg </p>
+              <div class="price">&#8377;63 <span class="original">&#8377;75</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 20 -->
+          <div class="product-card">
+            <img src="https://healthjade.com/wp-content/uploads/2017/07/how-to-eat-pomegranate.jpg" alt="Pomegranate">
+            <div class="product-info">
+              <h4>Promegranate </h4>
+              <p>2 pieces (400 - 500 g) </p>
+              <div class="price">&#8377;99 <span class="original">&#8377;125</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 21 -->
+          <div class="product-card">
+            <img src="https://www.gardeningknowhow.com/wp-content/uploads/2021/05/whole-and-slices-watermelon-1536x1152.jpg" alt="Watermelon">
+            <div class="product-info">
+              <h4>Watermelon </h4>
+              <p>1 piece (2.5 - 3.5 kg) </p>
+              <div class="price">&#8377;46 <span class="original">&#8377;64</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 22 -->
+          <div class="product-card">
+            <img src="https://fthmb.tqn.com/c935kf73GeoFxngyrVRmvEZkBWc=/4792x4000/filters:fill(87E3EF,1)/135577049-56a508b05f9b58b7d0da9930.jpg" alt="Avocado">
+            <div class="product-info">
+              <h4>Avocado </h4>
+              <p>1 piece (150 - 200 g) </p>
+              <div class="price">&#8377;84 <span class="original">&#8377;110</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 23 -->
+          <div class="product-card">
+            <img src="https://groceriesbyisrael.com/assets/images/produce/sungold-kiwi-gbi.jpg" alt="Sungold kiwi">
+            <div class="product-info">
+              <h4>Sungold Kiwi </h4>
+              <p>1 packet (3 pieces) </p>
+              <div class="price">&#8377;205 <span class="original">&#8377;230</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 24 -->
+          <div class="product-card">
+            <img src="https://swikblog.com/wp-content/uploads/2017/10/custard-apple-2.jpg" alt="Custard Apple">
+            <div class="product-info">
+              <h4>Custard Apple </h4>
+              <p>1 kg </p>
+              <div class="price">&#8377;106 <span class="original">&#8377;125</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 25 -->
+          <div class="product-card">
+            <img src="https://cooknovel.com/wp-content/uploads/2019/09/dragon-fruit-white.jpg" alt="Dragon Fruit (White)">
+            <div class="product-info">
+              <h4>Dragon Fruit (White) </h4>
+              <p>1 piece </p>
+              <div class="price">&#8377;73 <span class="original">&#8377;85</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 26 -->
+          <div class="product-card">
+            <img src="https://images3.alphacoders.com/915/915251.jpg" alt="Blueberry">
+            <div class="product-info">
+              <h4>Blueberry </h4>
+              <p>125 g </p>
+              <div class="price">&#8377;189 <span class="original">&#8377;265</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 27 -->
+          <div class="product-card">
+            <img src="https://img2.exportersindia.com/product_images/bc-full/2019/1/4082456/ber-fruit-1546859137-4627338.jpeg" alt="Ber Large">
+            <div class="product-info">
+              <h4>Ber large </h4>
+              <p>500 g </p>
+              <div class="price">&#8377;108 <span class="original">&#8377;130</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 28 -->
+          <div class="product-card">
+            <img src="https://www.wallpaperflare.com/static/124/114/437/plums-fruits-fruit-prunus-laurocerasus-round-wallpaper.jpg" alt="Plum">
+            <div class="product-info">
+              <h4>Plum </h4>
+              <p>500 g (4 -5 pieces) </p>
+              <div class="price">&#8377;126 <span class="original">&#8377;145</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 29 -->
+          <div class="product-card">
+            <img src="https://cdn.shopify.com/s/files/1/0076/4339/8233/products/sweet-tamarind.jpg?v=1543324355" alt="Sweet Tamarind">
+            <div class="product-info">
+              <h4>Sweet Tamarind  </h4>
+              <p>1 packet (250 g) </p>
+              <div class="price">&#8377;117 <span class="original">&#8377;130</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 30 -->
+          <div class="product-card">
+            <img src="https://im.pluckk.in/unsafe/1200x0/uploads/2872-yellow_dates_app.jpg" alt="Fresh Dates (Yellow)">
+            <div class="product-info">
+              <h4>Fresh Dates (Yellow) </h4>
+              <p>500 g </p>
+              <div class="price">&#8377;75 <span class="original">&#8377;100</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 31 -->
+          <div class="product-card">
+            <img src="https://specialtyproduce.com/sppics/15202.png" alt="Fresh Dates (Red)">
+            <div class="product-info">
+              <h4>Fresh Dates (Red) </h4>
+              <p>500 g </p>
+              <div class="price">&#8377;93 <span class="original">&#8377;126</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 32 -->
+          <div class="product-card">
+            <img src="https://idsb.tmgrup.com.tr/ly/uploads/images/2020/06/10/40174.jpg" alt="Cherry">
+            <div class="product-info">
+              <h4>Cherry </h4>
+              <p>1 packet (400 - 500 g) </p>
+              <div class="price">&#8377;367 <span class="original">&#8377;487</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+          <!-- Product Card 33 -->
+          <div class="product-card">
+            <img src="https://i.ytimg.com/vi/vGv01EyAd1o/maxresdefault.jpg" alt="Jamun">
+            <div class="product-info">
+              <h4>Jamun </h4>
+              <p>250 g </p>
+              <div class="price">&#8377;113 <span class="original">&#8377;154</span></div>
+              <button class="add-btn">Add</button>
+            </div>
+          </div>
+
+
+      <!-- Add more product cards as needed -->
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    
+    // Toggle cart sidebar
+    function toggleCart() {
+        document.querySelector('.cart-sidebar').classList.toggle('active');
+        document.querySelector('.overlay').classList.toggle('active');
+    }
+
+    // Add to cart function
+    function addToCart(button) {
+        const productCard = button.closest('.product-card');
+        const product = {
+            id: Date.now(), // Using timestamp as unique ID
+            name: productCard.querySelector('h4').textContent,
+            price: parseFloat(productCard.querySelector('.price').textContent.replace('₹', '')),
+            image: productCard.querySelector('img').src,
+            weight: productCard.querySelector('p').textContent,
+            quantity: 1
+        };
+
+        const existingItem = cart.find(item => item.name === product.name);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push(product);
+        }
+
+        updateCartDisplay();
+    }
+
+    // Update quantity
+    function updateQuantity(id, delta) {
+        const item = cart.find(item => item.id === id);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            }
+            updateCartDisplay();
+        }
+    }
+
+    // Remove item from cart
+    function removeItem(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartDisplay();
+    }
+
+    // Update cart display
+    function updateCartDisplay() {
+        const cartItems = document.querySelector('.cart-items');
+        const cartCount = document.querySelector('.cart-count');
+        const cartTotal = document.getElementById('cart-total');
+
+        // Update cart count
+        cartCount.textContent = cart.length;
+
+        // Update cart items
+        cartItems.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <p>${item.weight}</p>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        <button class="remove-item" onclick="removeItem(${item.id})">Remove</button>
+                    </div>
+                    <div class="price">₹${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            </div>
+        `).join('');
+
+        // Update total
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotal.textContent = total.toFixed(2);
+    }
+
+    // Add click event listeners to all Add buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const addButtons = document.querySelectorAll('.add-btn');
+        addButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                addToCart(this);
+            });
+        });
+    });
+</script>
+</body>
+</html>

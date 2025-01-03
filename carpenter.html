@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carpenter Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.service-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+.ratings h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.reviews {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.reviews li {
+  font-style: italic;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: green;
+}
+
+</style>
+
+<body>
+
+  <div class="service-container">
+    <h1>Carpenter Service Providers</h1>
+    
+    <!-- Example 1: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Jaydeep Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 910</p>
+      <p><strong>Available Areas:</strong> Riverdale, Hilltop</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 9 reviews)</p>
+        <ul class="reviews">
+          <li>"Did an amazing job building my custom furniture. Highly recommend!" - Shikhar</li>
+          <li>"Fast and efficient service, excellent craftsmanship." - Mayank</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Jaydeep Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Jaydeep Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 2: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Mukesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 911</p>
+      <p><strong>Available Areas:</strong> Brookfield, Pinecrest</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 5 reviews)</p>
+        <ul class="reviews">
+          <li>"Built a beautiful coffee table, very skilled carpenter." - Lisa</li>
+          <li>"Great work, would hire again for future projects." - Jonny</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Mukesh Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Mukesh Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 3: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Dinesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 912</p>
+      <p><strong>Available Areas:</strong> Westside, Northgate</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.8</span> (Based on 7 reviews)</p>
+        <ul class="reviews">
+          <li>"Excellent craftsmanship on the wooden deck. Very satisfied!" - Liza</li>
+          <li>"Professional service, well worth the price." - Steve</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Dinesh Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Dinesh Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Alkesh Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 913</p>
+      <p><strong>Available Areas:</strong> Lakeside, Sunset Valley</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.5</span> (Based on 6 reviews)</p>
+        <ul class="reviews">
+          <li>"Fixed our broken door efficiently, highly recommended!" - Sneha</li>
+          <li>"Reliable and quick service. Very pleased." - Sam</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Alkesh Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Alkehs Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 5: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Vishal Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 914</p>
+      <p><strong>Available Areas:</strong> Oakwood, Maple Street</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 8 reviews)</p>
+        <ul class="reviews">
+          <li>"Built custom cabinets for my kitchen. Great work!" - Jaymish</li>
+          <li>"Very professional, exceeded expectations with the furniture." - Richita</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Vishal Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Vishal Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 6: Carpenter Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Rajendra Bhai</h2>
+      <p><strong>Contact Number:</strong> +1 234 567 915</p>
+      <p><strong>Available Areas:</strong> Greenhill, Riverside</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.4</span> (Based on 5 reviews)</p>
+        <ul class="reviews">
+          <li>"Worked on our old furniture, gave it a fresh look." - Anika</li>
+          <li>"Did a good job with the wooden flooring. Would hire again." - Daksh</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Rajendra Bhai')">Request Service</button>
+      <button onclick="acceptRequest('Rajendra Bhai')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

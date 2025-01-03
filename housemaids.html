@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Maid Service Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.service-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.service-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+}
+
+.ratings {
+  margin-top: 15px;
+}
+
+.reviews {
+  list-style-type: none;
+  padding: 0;
+}
+
+.reviews li {
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-weight: bold;
+  color: #f39c12;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.response-message {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+</style>
+<body>
+
+  <div class="service-container">
+    <h1>House Maid Service Providers</h1>
+    
+    <!-- Example 1: House Maid Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Jayshree ben</h2>
+      <p><strong>Contact Number:</strong> +91 9562148738</p>
+      <p><strong>Available Areas:</strong> waghodiya,Vadodara</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.7</span> (Based on 5 reviews)</p>
+        <ul class="reviews">
+          <li>"She’s always on time and does a thorough cleaning job!" - Riya</li>
+          <li>"Very friendly and professional." - Meena</li>
+          <li>"Amazing attention to detail, highly recommend!" - Sara</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Jayshree ben')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 2: House Maid Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Geeta ben</h2>
+      <p><strong>Contact Number:</strong>+91 9562148738 </p>
+      <p><strong>Available Areas:</strong> Alkapuri,Vadodara</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.3</span> (Based on 3 reviews)</p>
+        <ul class="reviews">
+          <li>"Very polite and fast, did a great job!" - Devendra</li>
+          <li>"Her service was okay but there’s room for improvement." - Lucky</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Geeta ben')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 3: House Maid Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Sanjana ben</h2>
+      <p><strong>Contact Number:</strong> +91 9562148738</p>
+      <p><strong>Available Areas:</strong> Bhayli,Vadodara</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.9</span> (Based on 6 reviews)</p>
+        <ul class="reviews">
+          <li>"Excellent cleaning service, would hire again." - Neha</li>
+          <li>"Super fast and reliable!" - Sneha</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Sanjana ben')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Example 4: House Maid Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Khyati ben</h2>
+      <p><strong>Contact Number:</strong> +91 9562148738</p>
+      <p><strong>Available Areas:</strong> satelite Road,Ahmedabad</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.6</span> (Based on 4 reviews)</p>
+        <ul class="reviews">
+          <li>"Fantastic work, cleaned the house perfectly!" - Priya</li>
+          <li>"Reliable, would definitely book again." - Siya</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Khyati ben')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+    
+    <!-- Example 5: House Maid Service Provider -->
+    <div class="service-card">
+      <h2>Service Giver: Tejal ben</h2>
+      <p><strong>Contact Number:</strong> +91 9562148738</p>
+      <p><strong>Available Areas:</strong> manipura,Ahmedabad</p>
+      
+      <div class="ratings">
+        <h3>Customer Reviews & Ratings:</h3>
+        <p>Rating: <span class="rating">4.2</span> (Based on 2 reviews)</p>
+        <ul class="reviews">
+          <li>"She was good, but there were a few spots missed." - Alka</li>
+          <li>"Nice service overall, but took longer than expected." - Nena</li>
+        </ul>
+      </div>
+      
+      <button onclick="acceptRequest('Tejal ben')">Request Service</button>
+      <button onclick="acceptRequest('this')">Book Your Service</button>
+      
+      <div id="response-message" class="response-message"></div>
+    </div>
+  </div>
+
+  <!-- Example 6: House Maid Service Provider -->
+  <div class="service-card">
+    <h2>Service Giver: Saroj ben</h2>
+    <p><strong>Contact Number:</strong> +91 9562148738</p>
+    <p><strong>Available Areas:</strong> vatsrapur,Ahmedabad</p>
+    
+    <div class="ratings">
+      <h3>Customer Reviews & Ratings:</h3>
+      <p>Rating: <span class="rating">4.8</span> (Based on 7 reviews)</p>
+      <ul class="reviews">
+        <li>"Very professional and thorough cleaning. Highly recommend!" - Raya</li>
+        <li>"Punctual and efficient, did a fantastic job." - Suhani</li>
+      </ul>
+    </div>
+    
+    <button onclick="acceptRequest('Saroj ben')">Request Service</button>
+    <button onclick="acceptRequest('this')">Book Your Service</button>
+    
+    <div id="response-message" class="response-message"></div>
+  </div>
+  
+  <!-- Example 7: House Maid Service Provider -->
+  <div class="service-card">
+    <h2>Service Giver: Leela ben</h2>
+    <p><strong>Contact Number:</strong> +91 9562148738</p>
+    <p><strong>Available Areas:</strong>vesu,Surat</p>
+    
+    <div class="ratings">
+      <h3>Customer Reviews & Ratings:</h3>
+      <p>Rating: <span class="rating">4.4</span> (Based on 4 reviews)</p>
+      <ul class="reviews">
+        <li>"She did an okay job but could be more thorough in corners." - Danshi</li>
+        <li>"Very polite and friendly, the house looks good." - Shakshi</li>
+      </ul>
+    </div>
+    
+    <button onclick="acceptRequest('Leela ben')">Request Service</button>
+    <button onclick="acceptRequest('this')">Book Your Service</button>
+    
+    <div id="response-message" class="response-message"></div>
+  </div>
+  
+  <!-- Example 8: House Maid Service Provider -->
+  <div class="service-card">
+    <h2>Service Giver: Madhu ben</h2>
+    <p><strong>Contact Number:</strong> +91 9562148738</p>
+    <p><strong>Available Areas:</strong> Arjan,Surat</p>
+    
+    <div class="ratings">
+      <h3>Customer Reviews & Ratings:</h3>
+      <p>Rating: <span class="rating">5.0</span> (Based on 10 reviews)</p>
+      <ul class="reviews">
+        <li>"Absolutely perfect! My house is sparkling clean." - Megha</li>
+        <li>"Professional and always on time. Highly recommend!" - Juhi</li>
+      </ul>
+    </div>
+    
+    <button onclick="acceptRequest('Madhu ben')">Request Service</button>
+    <button onclick="acceptRequest('this')">Book Your Service</button>
+    
+    <div id="response-message" class="response-message"></div>
+  </div>
+
+  <!-- Example 9: House Maid Service Provider -->
+  <div class="service-card">
+    <h2>Service Giver: Puja ben</h2>
+    <p><strong>Contact Number:</strong> +91 9562148738</p>
+    <p><strong>Available Areas:</strong> karelibaug,vadodara</p>
+    
+    <div class="ratings">
+      <h3>Customer Reviews & Ratings:</h3>
+      <p>Rating: <span class="rating">4.6</span> (Based on 6 reviews)</p>
+      <ul class="reviews">
+        <li>"Great service, she cleaned every room thoroughly!" - Kritika</li>
+        <li>"Very reliable and easy to work with." - Simran</li>
+      </ul>
+    </div>
+    
+    <button onclick="acceptRequest('Puja ben')">Request Service</button>
+    <button onclick="acceptRequest('this')">Book Your Service</button>
+    
+    <div id="response-message" class="response-message"></div>
+  </div>
+  
+  <!-- Example 10: House Maid Service Provider -->
+  <div class="service-card">
+    <h2>Service Giver: Saroj ben</h2>
+    <p><strong>Contact Number:</strong> +91 9562148738</p>
+    <p><strong>Available Areas:</strong> warasiya,Vadodara</p>
+    
+    <div class="ratings">
+      <h3>Customer Reviews & Ratings:</h3>
+      <p>Rating: <span class="rating">4.3</span> (Based on 5 reviews)</p>
+      <ul class="reviews">
+        <li>"She did a good job, but took a little longer than expected." - Hiya</li>
+        <li>"Nice cleaning service, would book again." - Shreya</li>
+      </ul>
+    </div>
+
+    <button onclick="acceptRequest('Suman ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+
+    <!-- Example 11: House Maid Service Provider -->
+    <div class="service-card">
+        <h2>Service Giver: Suman ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Manjalpur,Vadodara</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.7</span> (Based on 8 reviews)</p>
+          <ul class="reviews">
+            <li>"Olivia did an amazing job cleaning the entire house." - Richel</li>
+            <li>"Polite, professional, and efficient. Highly recommend!" - Kriya</li>
+          </ul>
+        </div>
+        
+        <button onclick="acceptRequest('Suman ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+      
+      <!-- Example 12: House Maid Service Provider -->
+      <div class="service-card">
+        <h2>Service Giver: Sharda ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Mota Varachha, Surat</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.5</span> (Based on 9 reviews)</p>
+          <ul class="reviews">
+            <li>"Mia was great, cleaned every corner of the house." - Tina</li>
+            <li>"Good service, but could improve on the bathroom cleaning." - Sina</li>
+          </ul>
+        </div>
+        
+        <button onclick="acceptRequest('Sharda ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+      
+      <!-- Example 13: House Maid Service Provider -->
+      <div class="service-card">
+        <h2>Service Giver: Saroj ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Katargam, Surat</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.8</span> (Based on 6 reviews)</p>
+          <ul class="reviews">
+            <li>"Amazing work! The house was spotless after she finished." - Diya</li>
+            <li>"Very efficient and detailed. Would hire again!" - Aneri</li>
+          </ul>
+        </div>
+        
+        <button onclick="acceptRequest('Saroj ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+  
+      <!-- Example 14: House Maid Service Provider -->
+      <div class="service-card">
+        <h2>Service Giver: Sharda ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Adajan, Surat</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.6</span> (Based on 7 reviews)</p>
+          <ul class="reviews">
+            <li>"Chloe is very reliable, and the cleaning was perfect." - Jonita</li>
+            <li>"Great service, but could be a little quicker." - Mina</li>
+          </ul>
+        </div>
+        
+        <button onclick="acceptRequest('Sharda ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+      
+      <!-- Example 15: House Maid Service Provider -->
+      <div class="service-card">
+        <h2>Service Giver: Madhu ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Sachin, Surat</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.4</span> (Based on 5 reviews)</p>
+          <ul class="reviews">
+            <li>"Ella is very thorough and always leaves the house sparkling." - Ishika</li>
+            <li>"Nice job, but a bit more attention to detail is needed." - Arya</li>
+          </ul>
+        </div>
+        
+        <button onclick="acceptRequest('Madhu ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+  
+      <!-- Example 16: House Maid Service Provider -->
+      <div class="service-card">
+        <h2>Service Giver: Sunita ben</h2>
+        <p><strong>Contact Number:</strong> +91 9562148738</p>
+        <p><strong>Available Areas:</strong> Narolgam, Ahmedabad</p>
+        
+        <div class="ratings">
+          <h3>Customer Reviews & Ratings:</h3>
+          <p>Rating: <span class="rating">4.3</span> (Based on 4 reviews)</p>
+          <ul class="reviews">
+            <li>"Sophia was punctual and did a good job, but missed a few spots." - Brinjal</li>
+            <li>"Good service overall, but could improve in the kitchen." - Janvi</li>
+          </ul>
+        </div>
+
+        <button onclick="acceptRequest('Madhu ben')">Request Service</button>
+        <button onclick="acceptRequest('this')">Book Your Service</button>
+        
+        <div id="response-message" class="response-message"></div>
+      </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

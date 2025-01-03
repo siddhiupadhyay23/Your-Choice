@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color:rgb(171, 230, 187);
+    color: black;
+    font-size: 30px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+.membership-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 550px;
+    height: 650px;
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 34px;
+    color: #333;
+}
+
+.card p {
+    font-size: 30px;
+    color: black;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1em;
+}
+
+.card ul li {
+    margin: 20px 0;
+    padding-top: 2.5%;
+    font-size: 28px;
+}
+
+button {
+    background-color: rgb(171, 230, 187);
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-top: 1.5%;
+    font-size: 25px;
+}
+
+button:hover {
+    background-color: rgb(171, 230, 187);
+}
+
+#selected-plan {
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#selected-plan h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Welcome to Our Membership Plans</h1>
+        <p>Choose the membership that suits your needs</p>
+    </header>
+    
+    <section class="membership-cards">
+        <div class="card basic">
+            <h2>Basic Membership</h2>
+            <p>₹1000/month</p>
+            <ul>
+                <li>Priority Delivery</li>
+                <li>5% Discount on Orders</li>
+                <li>Custom Delivery Slots</li>
+            </ul>
+            <button onclick="selectMembership('Basic')">Select</button>
+        </div>
+        
+        <div class="card premium">
+            <h2>Premium Membership</h2>
+            <p>₹5000/month</p>
+            <ul>
+                <li>Free Delivery</li>
+                <li>10% Discount on Orders</li>
+                <li>Dedicated Customer Support</li>
+                <li>Access to Premium Services</li>
+            </ul>
+            <button onclick="selectMembership('Premium')">Select</button>
+        </div>
+        
+        <div class="card elite">
+            <h2>Elite Membership</h2>
+            <p>₹10000/month</p>
+            <ul>
+                <li>All Premium Benefits</li>
+                <li>Exclusive Services</li>
+                <li>Monthly Freebies</li>
+                <li>Personalized Services</li>
+            </ul>
+            <button onclick="selectMembership('Elite')">Select</button>
+        </div>
+    </section>
+
+    <div id="selected-plan">
+        <h2>Your Selected Plan:</h2>
+        <p id="selected-plan-text"></p>
+    </div>
+    <script>
+      function selectMembership(plan) {
+    let selectedPlanText = document.getElementById('selected-plan-text');
+    if (plan === 'Basic') {
+        selectedPlanText.textContent = "You have selected the Basic Membership. $5/month. Enjoy Priority Delivery, 5% Discount, and Custom Delivery Slots.";
+    } else if (plan === 'Premium') {
+        selectedPlanText.textContent = "You have selected the Premium Membership. $10/month. Enjoy Free Delivery, 10% Discount, Dedicated Support, and Premium Services.";
+    } else if (plan === 'Elite') {
+        selectedPlanText.textContent = "You have selected the Elite Membership. $20/month. Enjoy All Premium Benefits, Exclusive Services, Monthly Freebies, and Personalized Services.";
+    }
+}
+
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
