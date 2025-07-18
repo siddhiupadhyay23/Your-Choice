@@ -1,18 +1,42 @@
 // Function to fetch products from the API
 async function fetchProducts(category = '') {
     try {
+        // First try to fetch from API
         const url = category ? `/api/products?category=${category}` : '/api/products';
         const response = await fetch(url);
         
-        if (!response.ok) {
-            throw new Error('Failed to fetch products');
+        if (response.ok) {
+            return await response.json();
         }
         
-        return await response.json();
+        // If API fails, return sample products
+        console.warn('Using sample products as API request failed');
+        return getSampleProducts(category);
     } catch (error) {
         console.error('Error fetching products:', error);
-        return [];
+        // Return sample products as fallback
+        return getSampleProducts(category);
     }
+}
+
+// Function to get sample products
+function getSampleProducts(category = '') {
+    const allProducts = [
+        { _id: '1', name: 'Apple', price: 50, category: 'fruits', image: 'https://5.imimg.com/data5/AK/RA/MY-68428614/apple.jpg', description: 'Fresh red apples' },
+        { _id: '2', name: 'Banana', price: 30, category: 'fruits', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHPr49bv2cMFJZ0z9WfjG3dqS8Wor6ghljw&s', description: 'Ripe yellow bananas' },
+        { _id: '3', name: 'Carrot', price: 40, category: 'vegetables', image: 'https://orgfarm.store/cdn/shop/files/carrot-bunch.png?v=1721726918&width=1214', description: 'Fresh orange carrots' },
+        { _id: '4', name: 'Tomato', price: 25, category: 'vegetables', image: 'https://m.economictimes.com/thumb/msid-95423731,width-1200,height-900,resizemode-4,imgsize-56196/tomatoes-canva.jpg', description: 'Ripe red tomatoes' },
+        { _id: '5', name: 'Milk', price: 50, category: 'dairy', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLYLrpcL-2TKZDY0eljDthboDPMytCCRgVg&s', description: 'Fresh cow milk' },
+        { _id: '6', name: 'Rice', price: 60, category: 'grains', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmux8yqAqpUbX6ZYbL_ElNcpLq1itEn7GuiQ&s', description: 'Premium basmati rice' },
+        { _id: '7', name: 'Eggs', price: 70, category: 'dairy', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfiO7agvs5Xg3uKg-u0FIahDpYwib8Fj6giA&s', description: 'Farm fresh eggs' },
+        { _id: '8', name: 'Paneer', price: 80, category: 'dairy', image: 'https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/saqgxjo3qzaab8hdchqt', description: 'Fresh cottage cheese' }
+    ];
+    
+    if (!category) {
+        return allProducts;
+    }
+    
+    return allProducts.filter(product => product.category === category);
 }
 
 // Function to display products in the UI
@@ -64,13 +88,21 @@ function addToCart(event) {
     // Get the cart from localStorage or initialize an empty array
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Add the product to the cart
-    cart.push({
-        id: productId,
-        name,
-        price,
-        quantity: 1
-    });
+    // Check if product already exists in cart
+    const existingItemIndex = cart.findIndex(item => item.id === productId);
+    
+    if (existingItemIndex !== -1) {
+        // If product exists, increase quantity
+        cart[existingItemIndex].quantity += 1;
+    } else {
+        // If product doesn't exist, add it
+        cart.push({
+            id: productId,
+            name,
+            price,
+            quantity: 1
+        });
+    }
     
     // Save the cart to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -79,7 +111,17 @@ function addToCart(event) {
     updateCartUI();
     
     // Show a notification
-    alert(`${name} added to cart!`);
+    const notification = document.createElement('div');
+    notification.textContent = `${name} added to cart!`;
+    notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2);';
+    document.body.appendChild(notification);
+    
+    // Remove notification after 2 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.5s';
+        setTimeout(() => notification.remove(), 500);
+    }, 2000);
 }
 
 // Function to update the cart UI

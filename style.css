@@ -6,10 +6,9 @@ body {
 
 header {
     background-color: rgb(246, 246, 246);
-    padding: 10px 15px 33px 15px;
+    padding: 10px 15px;
     border-bottom: 2px solid #ddd;
-    font-size:25px;
-    justify-content: space-between;
+    font-size: 18px;
 }
 .header-a {
     display: flex;
@@ -18,17 +17,19 @@ header {
 }
 .search-container {
     position: relative;
-    width: 650px;
-    padding-top: 2.32%;
+    width: 40%;
+    padding-top: 0;
+    margin: 0 10px;
   }
   
 #search{
     position: relative;
-    width: 750px;
-    padding-top: 0.2rem;
-    border: 1px solid bold #ccc;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 27px;
+    font-size: 18px;
+    box-sizing: border-box;
   }
   
 .suggestions {
@@ -62,25 +63,30 @@ header {
 }
 
 .profile {
-    font-size: 27px;
+    font-size: 20px;
     font-weight: bold;
-    padding: 10px 10px;
-    padding-right: 120px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile a {
+    text-decoration: none;
+    color: #333;
 }
 
 .navigation-bar {
-    padding-top: 15%;
     background-color: rgb(246, 246, 246);
-    padding: 5px 40px;
-    padding-bottom: 0.12%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 40px;
     width: 100%;
     border-radius: 4px;
     cursor: pointer;
     font-size: 20px;
+    box-sizing: border-box;
 }
 
 .navigation-bar ul {
@@ -94,12 +100,25 @@ header {
 }
 
 .navigation-bar ul li {
-    display: inline;
+    display: inline-block;
     color: black;
     text-decoration: none;
-    width: 100%;
-    font-size: 26px;
+    width: 33.33%;
+    font-size: 22px;
     text-align: center;
+}
+
+.navigation-bar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px 15px;
+    transition: background-color 0.3s;
+}
+
+.navigation-bar ul li a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
 }
 
 nav ul li a {
@@ -129,19 +148,23 @@ nav ul li a:hover {
 .authorize {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
     padding: 10px;
+    align-items: center;
 }
 
 .authorize button {
-    padding: 10px 20px;
-    font-size: 27px;
+    padding: 8px 16px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     background-color: #32a852;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    text-align: center;
+    margin: 0 5px;
 }
 
 .authorize button:hover {
@@ -151,11 +174,13 @@ nav ul li a:hover {
 }
 main {
     text-align: center;
-    height: 80%;
     background-color: white;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 20%;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -210,12 +235,12 @@ footer {
     background-color: rgb(171, 230, 187);
     display: flex;
     max-width: 1300px;
-    width: 100%;
-    padding-top: 0.2%;
+    width: 90%;
+    margin: 0 auto;
     justify-content: space-between;
     border-radius: 20px;
     padding: 30px 50px 35px 50px;
-    flex-basis: 38%;
+    box-sizing: border-box;
 }
 .intro {
     font-size: 40px;

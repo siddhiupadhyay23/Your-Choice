@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(express.json());
@@ -18,10 +18,7 @@ app.use(session({
 }));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/your-choice', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect('mongodb://localhost:27017/your-choice')
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
@@ -366,7 +363,21 @@ app.get('/api/orders/:id', isAuthenticated, async (req, res) => {
 
 // Initialize data and start server
 initializeData().then(() => {
-    app.listen(PORT, () => {
+    // Try to start the server with port handling
+    const server = app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
+        console.log(`Open your browser and navigate to http://localhost:${PORT}`);
+    }).on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`Port ${PORT} is already in use. Trying port ${PORT + 1}...`);
+            // Try the next port
+            const newPort = PORT + 1;
+            app.listen(newPort, () => {
+                console.log(`Server running on port ${newPort}`);
+                console.log(`Open your browser and navigate to http://localhost:${newPort}`);
+            });
+        } else {
+            console.error('Server error:', err);
+        }
     });
 });
