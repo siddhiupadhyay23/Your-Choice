@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service - Your Choice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/services.css">
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>Book a Service</h1>
+            <p>Fill in the details to book your service</p>
+        </div>
+        
+        <div id="service-details" class="service-details">
+            <!-- Service details will be populated here -->
+            <p>Loading service details...</p>
+        </div>
+        
+        <form id="booking-form" class="booking-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="service-date">Service Date</label>
+                <input type="date" id="service-date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="service-time">Service Time</label>
+                <select id="service-time" required>
+                    <option value="">Select a time</option>
+                    <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
+                    <option value="afternoon">Afternoon (12:00 PM - 3:00 PM)</option>
+                    <option value="evening">Evening (3:00 PM - 6:00 PM)</option>
+                </select>
+            </div>
+            
+            <div class="form-group grid-full">
+                <label for="service-address">Service Address</label>
+                <textarea id="service-address" required></textarea>
+            </div>
+            
+            <div class="form-group grid-full">
+                <label for="special-instructions">Special Instructions (Optional)</label>
+                <textarea id="special-instructions"></textarea>
+            </div>
+            
+            <div class="form-group grid-full">
+                <button type="submit" class="submit-btn">Book Service</button>
+            </div>
+        </form>
+    </div>
+    
+    <script src="/js/services.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('serviceId');
+            
+            if (!serviceId) {
+                document.getElementById('service-details').innerHTML = '<p>No service selected</p>';
+                return;
+            }
+            
+            try {
+                // Fetch service details
+                const response = await fetch(`/api/services/${serviceId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch service details');
+                }
+                
+                const service = await response.json();
+                
+                // Display service details
+                const serviceDetails = document.getElementById('service-details');
+                serviceDetails.innerHTML = `
+                    <div class="service-card">
+                        <h3 class="service-title">${service.name}</h3>
+                        <p class="service-provider">Provider: ${service.provider}</p>
+                        <p class="service-description">${service.description}</p>
+                        <div class="service-rating">${generateStarRating(service.rating)}</div>
+                        <p class="service-price">₹${service.price}</p>
+                    </div>
+                `;
+                
+                // Handle form submission
+                const bookingForm = document.getElementById('booking-form');
+                bookingForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const serviceDate = document.getElementById('service-date').value;
+                    const serviceTime = document.getElementById('service-time').value;
+                    const serviceAddress = document.getElementById('service-address').value;
+                    const specialInstructions = document.getElementById('special-instructions').value;
+                    
+                    try {
+                        // Create an order with the service
+                        const orderData = {
+                            services: [
+                                {
+                                    service: serviceId,
+                                    date: new Date(serviceDate)
+                                }
+                            ],
+                            totalAmount: service.price,
+                            deliveryAddress: serviceAddress,
+                            paymentMethod: 'cod' // Default to cash on delivery
+                        };
+                        
+                        const response = await fetch('/api/orders', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(orderData)
+                        });
+                        
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.message || 'Failed to book service');
+                        }
+                        
+                        const order = await response.json();
+                        
+                        alert('Service booked successfully!');
+                        window.location.href = `/track-order.html?orderId=${order._id}`;
+                    } catch (error) {
+                        alert(`Failed to book service: ${error.message}`);
+                    }
+                });
+            } catch (error) {
+                document.getElementById('service-details').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

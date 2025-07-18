@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - Your Choice</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tracking-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tracking-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .tracking-header h1 {
+            color: #32a852;
+            font-size: 28px;
+        }
+        
+        .tracking-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .tracking-line {
+            flex: 1;
+            height: 4px;
+            background-color: #ddd;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tracking-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-name {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .tracking-step.completed .step-indicator {
+            background-color: #32a852;
+        }
+        
+        .tracking-step.current .step-indicator {
+            background-color: #ffc107;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .tracking-step.cancelled .step-indicator {
+            background-color: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            }
+        }
+        
+        .order-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        .order-details h3 {
+            color: #32a852;
+            margin-bottom: 15px;
+        }
+        
+        .order-details p {
+            margin-bottom: 10px;
+        }
+        
+        .back-btn {
+            background-color: #32a852;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="tracking-container">
+        <div class="tracking-header">
+            <h1>Track Your Order</h1>
+            <p>Check the status of your delivery</p>
+        </div>
+        
+        <div id="order-tracking">
+            <!-- Order tracking details will be populated here -->
+            <p>Loading order details...</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+    
+    <script src="/js/orders.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (orderId) {
+                displayOrderTracking(orderId, 'order-tracking');
+            } else {
+                document.getElementById('order-tracking').innerHTML = '<p>No order ID provided</p>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,242 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plumber Service Request</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Plumber Services - Your Choice</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/services.css">
 </head>
-
-<style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-.service-container {
-  width: 80%;
-  margin: 20px auto;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.service-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-h2 {
-  font-size: 1.6em;
-  color: #333;
-}
-
-p {
-  font-size: 1.1em;
-}
-
-.ratings h3 {
-  margin-top: 15px;
-  font-size: 1.3em;
-}
-
-.reviews {
-  list-style: none;
-  margin-top: 10px;
-}
-
-.reviews li {
-  font-style: italic;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1.1em;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.response-message {
-  margin-top: 15px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: green;
-}
-
-</style>
 <body>
-
-  <div class="service-container">
-    <h1>Plumber Service Providers</h1>
-    
-    <!-- Example 1: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Rahul Bhai</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 910</p>
-      <p><strong>Available Areas:</strong> Downtown, Oakwood</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.8</span> (Based on 10 reviews)</p>
-        <ul class="reviews">
-          <li>"Fixed my leaking pipe quickly. Very professional!" - Shital</li>
-          <li>"Great service, very efficient and knowledgeable." - Miksha</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('Rahul Bhai')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
+  <div class="service-list-container">
+    <div class="service-list-header">
+      <h1>Plumber Services</h1>
+      <p>Professional plumbing services for all your needs</p>
     </div>
     
-    <!-- Example 2: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Dinesh Bhai</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 911</p>
-      <p><strong>Available Areas:</strong> Riverdale, Pinehill</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.6</span> (Based on 8 reviews)</p>
-        <ul class="reviews">
-          <li>"Fixed our water heater in no time. Highly recommend!" - Siddhi</li>
-          <li>"Great at troubleshooting plumbing issues. Will hire again!" - Dhvani</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('Dinesh Bhai')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
+    <div id="service-list" class="service-grid">
+      <!-- Services will be loaded here dynamically -->
+      <p>Loading services...</p>
     </div>
-    
-    <!-- Example 3: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Jitendra Bhai</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 912</p>
-      <p><strong>Available Areas:</strong> Brookside, Northgate</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.7</span> (Based on 9 reviews)</p>
-        <ul class="reviews">
-          <li>"Came quickly and fixed our plumbing issue in no time." - Liza</li>
-          <li>"Reliable and honest, fixed our leaky faucet without charging much." - Tina</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('JItendra Bhai')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
-    </div>
-
-    <!-- Example 4: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Vinod Bhai</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 913</p>
-      <p><strong>Available Areas:</strong> Maple Valley, Pinecrest</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.9</span> (Based on 12 reviews)</p>
-        <ul class="reviews">
-          <li>"Excellent work with my clogged drain. Very professional!" - Marina</li>
-          <li>"Prompt service and quick fixes. Will definitely hire again!" - Nisha</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('Vinod Bhai')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
-    </div>
-
-    <!-- Example 5: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Ramesh Bhai</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 914</p>
-      <p><strong>Available Areas:</strong> Greenhill, Hillcrest</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.4</span> (Based on 7 reviews)</p>
-        <ul class="reviews">
-          <li>"Very friendly and knowledgeable. Fixed my sink with no issues." - Satish</li>
-          <li>"Efficient and quick work. Will call again for future plumbing jobs." - Lavanya</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('Ramesh Bhai')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
-    </div>
-    
-    <!-- Example 6: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Sarah Wilson</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 915</p>
-      <p><strong>Available Areas:</strong> Riverside, Elmwood</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.5</span> (Based on 6 reviews)</p>
-        <ul class="reviews">
-          <li>"Solved our plumbing issues fast and efficiently!" - Anna</li>
-          <li>"Very professional, great at fixing burst pipes." - James</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('this')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
-    </div>
-
-    <!-- Example 7: Plumber Service Provider -->
-    <div class="service-card">
-      <h2>Service Giver: Chris Taylor</h2>
-      <p><strong>Contact Number:</strong> +1 234 567 916</p>
-      <p><strong>Available Areas:</strong> Sunset Boulevard, Crestwood</p>
-      
-      <div class="ratings">
-        <h3>Customer Reviews & Ratings:</h3>
-        <p>Rating: <span class="rating">4.7</span> (Based on 11 reviews)</p>
-        <ul class="reviews">
-          <li>"Fixed the water pressure issue in no time!" - Rachel</li>
-          <li>"Highly skilled plumber, very efficient." - Robert</li>
-        </ul>
-      </div>
-      
-      <button onclick="acceptRequest('this')">Request Service</button>
-      <button onclick="acceptRequest('this')">Book Your Service</button>
-      
-      <div id="response-message" class="response-message"></div>
-    </div>
-
   </div>
 
-  <script src="scripts.js"></script>
+  <script src="/js/services.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch plumber services
+      fetchServices('plumber').then(services => {
+        displayServices(services, 'service-list');
+      });
+    });
+  </script>
 </body>
 </html>
-

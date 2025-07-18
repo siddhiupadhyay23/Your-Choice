@@ -3,194 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Methods</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Checkout - Your Choice</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .checkout-header h1 {
+            color: #32a852;
+            font-size: 28px;
+        }
+        
+        .checkout-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .order-summary h2 {
+            color: #32a852;
+            margin-bottom: 15px;
+        }
+        
+        .order-items {
+            margin-bottom: 15px;
+        }
+        
+        .order-total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            text-align: right;
+        }
+        
+        .payment-methods {
+            margin-bottom: 20px;
+        }
+        
+        .payment-method {
+            margin-bottom: 10px;
+        }
+        
+        .payment-method input {
+            margin-right: 10px;
+        }
+        
+        .checkout-btn {
+            background-color: #32a852;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #28a745;
+        }
+        
+        .grid-full {
+            grid-column: 1 / -1;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f7f7f7;
-    }
-
-    .container {
-        width: 100%;
-        height: 350px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .payment-methods {
-        display: flex;
-        padding-top: 3%;
-        font-size: 35px;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-
-    .payment-method {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .payment-method input {
-        margin-right: 10px;
-    }
-
-    .payment-method img {
-        width: 50px;
-        height: auto;
-    }
-
-    .payment-details {
-        display: none;
-        margin-top: 20px;
-    }
-
-    .credit-card-form,
-    .paypal-form,
-    .cod-form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    input[type="text"], input[type="number"], input[type="email"] {
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-
-    .submit-btn {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    .submit-btn:disabled {
-        background-color: #ccc;
-    }
-
-    .payment-methods img {
-        cursor: pointer;
-    }
-</style>
 <body>
-    <div class="container">
-        <h2>Select Payment Method</h2>
-        <div class="payment-methods">
-            <label class="payment-method">
-                <input type="radio" name="payment-method" value="credit-card" id="credit-card">
-                <img src="https://bsmedia.business-standard.com/_media/bs/img/article/2024-03/12/full/1710223554-0545.jpg" alt="Credit Card">
-                Credit Card
-            </label>
-            <label class="payment-method">
-                <input type="radio" name="payment-method" value="paypal" id="paypal">
-                <img src="https://i.pcmag.com/imagery/reviews/068BjcjwBw0snwHIq0KNo5m-15.fit_lim.size_1050x591.v1602794215.png" alt="PayPal">
-                PayPal
-            </label>
-            <label class="payment-method">
-                <input type="radio" name="payment-method" value="paypal" id="paypal">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2CSqpGYQ7Iky4lEgese70vb6IylEV3DGedg&s" alt="GooglePay">
-                Google Pay
-            </label>
-            <label class="payment-method">
-                <input type="radio" name="payment-method" value="cod" id="cod">
-                <img src="https://5.imimg.com/data5/SELLER/Default/2022/7/WY/CN/OL/31988493/cash-on-delivery-500x500.jpg" alt="Cash on Delivery">
-                Cash on Delivery
-            </label>
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+            <p>Complete your order</p>
         </div>
-
-        <div class="payment-details">
-            <form id="payment-form">
-                <div class="credit-card-form" id="credit-card-form">
-                    <label for="card-number">Card Number:</label>
-                    <input type="number" id="card-number" name="card-number" placeholder="Enter your card number" required>
-
-                    <label for="expiry-date">Expiry Date (MM/YY):</label>
-                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
-
-                    <label for="cvv">CVV:</label>
-                    <input type="number" id="cvv" name="cvv" placeholder="CVV" required>
-                </div>
-
-                <div class="paypal-form" id="paypal-form">
-                    <label for="paypal-email">PayPal Email:</label>
-                    <input type="email" id="paypal-email" name="paypal-email" placeholder="Enter your PayPal email" required>
-                </div>
-
-                <div class="cod-form" id="cod-form">
-                    <p>You will pay cash on delivery. No further details required.</p>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submit-btn">Proceed to Pay</button>
-            </form>
+        
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="order-items" id="order-items">
+                <!-- Order items will be populated here -->
+                <p>Loading items...</p>
+            </div>
+            <div class="order-total">
+                Total: ₹<span id="order-total">0</span>
+            </div>
         </div>
+        
+        <form id="checkout-form" class="checkout-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="delivery-date">Delivery Date</label>
+                <input type="date" id="delivery-date" required>
+            </div>
+            
+            <div class="form-group grid-full">
+                <label for="delivery-address">Delivery Address</label>
+                <textarea id="delivery-address" required></textarea>
+            </div>
+            
+            <div class="form-group grid-full">
+                <label>Payment Method</label>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <input type="radio" id="payment-cod" name="payment-method" value="cod" checked>
+                        <label for="payment-cod">Cash on Delivery</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="payment-card" name="payment-method" value="card">
+                        <label for="payment-card">Credit/Debit Card</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="payment-upi" name="payment-method" value="upi">
+                        <label for="payment-upi">UPI</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group grid-full">
+                <button type="submit" class="checkout-btn">Place Order</button>
+            </div>
+        </form>
     </div>
-
+    
+    <script src="/js/products.js"></script>
+    <script src="/js/orders.js"></script>
     <script>
-        const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
-        const paymentDetails = document.querySelector('.payment-details');
-        const creditCardForm = document.getElementById('credit-card-form');
-        const paypalForm = document.getElementById('paypal-form');
-        const codForm = document.getElementById('cod-form');
-        const submitButton = document.getElementById('submit-btn');
-        const paymentForm = document.getElementById('payment-form');
-
-        paymentMethods.forEach(method => {
-            method.addEventListener('change', function () {
-                paymentDetails.style.display = 'block';
-                creditCardForm.style.display = 'none';
-                paypalForm.style.display = 'none';
-                codForm.style.display = 'none';
-
-                if (this.value === 'credit-card') {
-                    creditCardForm.style.display = 'block';
-                } else if (this.value === 'paypal') {
-                    paypalForm.style.display = 'block';
-                } else if (this.value === 'cod') {
-                    codForm.style.display = 'block';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display cart items in the order summary
+            const orderItems = document.getElementById('order-items');
+            const orderTotal = document.getElementById('order-total');
+            
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (cart.length === 0) {
+                orderItems.innerHTML = '<p>Your cart is empty</p>';
+                return;
+            }
+            
+            let total = 0;
+            let itemsHtml = '<ul>';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * (item.quantity || 1);
+                total += itemTotal;
+                
+                itemsHtml += `<li>${item.name} - ₹${item.price} x ${item.quantity || 1} = ₹${itemTotal}</li>`;
+            });
+            
+            itemsHtml += '</ul>';
+            orderItems.innerHTML = itemsHtml;
+            orderTotal.textContent = total;
+            
+            // Handle form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                
+                const deliveryAddress = document.getElementById('delivery-address').value;
+                const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                
+                try {
+                    const order = await createOrderFromCart(deliveryAddress, paymentMethod);
+                    alert('Order placed successfully!');
+                    window.location.href = `/track-order.html?orderId=${order._id}`;
+                } catch (error) {
+                    alert(`Failed to place order: ${error.message}`);
                 }
             });
-        });
-
-        // Disable submit button until form is filled out
-        paymentForm.addEventListener('input', function () {
-            const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
-            if (selectedMethod) {
-                if (selectedMethod.value === 'credit-card') {
-                    const cardNumber = document.getElementById('card-number').value;
-                    const expiryDate = document.getElementById('expiry-date').value;
-                    const cvv = document.getElementById('cvv').value;
-                    submitButton.disabled = !(cardNumber && expiryDate && cvv);
-                } else if (selectedMethod.value === 'paypal') {
-                    const paypalEmail = document.getElementById('paypal-email').value;
-                    submitButton.disabled = !paypalEmail;
-                } else {
-                    submitButton.disabled = false; // Cash on Delivery requires no extra input
-                }
-            } else {
-                submitButton.disabled = true;
-            }
-        });
-
-        paymentForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            alert('Payment successful!');
-            // You can send form data to your server here
         });
     </script>
 </body>

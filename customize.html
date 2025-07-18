@@ -139,107 +139,26 @@ main {
         </main>
     </div>
 
-    <script>
-        const products = [
-            { name: "Apple", price: 50, img: "https://5.imimg.com/data5/AK/RA/MY-68428614/apple.jpg" },
-            { name: "Banana", price: 30, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHPr49bv2cMFJZ0z9WfjG3dqS8Wor6ghljw&s" },
-            { name: "Carrot", price: 40, img: "https://orgfarm.store/cdn/shop/files/carrot-bunch.png?v=1721726918&width=1214" },
-            { name: "Tomato", price: 25, img: "https://m.economictimes.com/thumb/msid-95423731,width-1200,height-900,resizemode-4,imgsize-56196/tomatoes-canva.jpg" },
-            { name: "Milk", price: 50, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLYLrpcL-2TKZDY0eljDthboDPMytCCRgVg&s" },
-            { name: "Rice", price: 60, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmux8yqAqpUbX6ZYbL_ElNcpLq1itEn7GuiQ&s" },
-            { name: "Eggs", price: 70, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfiO7agvs5Xg3uKg-u0FIahDpYwib8Fj6giA&s" },
-            { name: "Paneer", price: 80, img: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/saqgxjo3qzaab8hdchqt" }
-        ];
-
-        // Function to display products
-        function displayProducts(filteredProducts = products) {
-            const productList = document.getElementById("product-list");
-            productList.innerHTML = ''; // Clear the list before populating
-            filteredProducts.forEach(product => {
-                const productElement = document.createElement("div");
-                productElement.classList.add("product");
-                productElement.dataset.name = product.name;
-                productElement.dataset.price = product.price;
-
-                productElement.innerHTML = `
-                    <img src="${product.img}" alt="${product.name}">
-                    <p>${product.name}</p>
-                    <p>₹${product.price}</p>
-                    <button class="add-btn">Add</button>
-                `;
-                productList.appendChild(productElement);
-            });
-
-            // Reattach add-to-cart event listener
-            document.querySelectorAll('.add-btn').forEach(button => {
-                button.addEventListener('click', () => addToCart(button));
-            });
-        }
-
-        // Initialize the product list
-        displayProducts();
-
-        // Handle search functionality
-        const searchBar = document.getElementById("search-bar");
-        searchBar.addEventListener("input", function() {
-            const query = searchBar.value.toLowerCase();
-            const filteredProducts = products.filter(product => 
-                product.name.toLowerCase().includes(query)
-            );
-            displayProducts(filteredProducts);
-        });
-
-        // Clear search field
-        const clearSearch = document.getElementById("clear-search");
-        clearSearch.addEventListener("click", () => {
-            searchBar.value = '';
-            displayProducts();
-        });
-
-        // Handle add-to-cart functionality
-        let cart = [];
-
-        function addToCart(button) {
-            const product = button.parentElement;
-            const name = product.dataset.name;
-            const price = parseInt(product.dataset.price, 10);
-
-            // Add product to cart
-            cart.push({ name, price });
-            updateCart();
-        }
-
-        // Update the cart display
-        function updateCart() {
-            const cartItems = document.getElementById("cart-items");
-            cartItems.innerHTML = ''; // Clear the cart before updating
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement("li");
-                cartItem.innerHTML = `${item.name} - ₹${item.price} <button class="remove-btn" data-index="${index}">Remove</button>`;
-
-                cartItems.appendChild(cartItem);
-
-                // Update total
-                total += item.price;
-            });
-
-            // Update the cart total
-            document.getElementById("cart-total").textContent = total;
-
-            // Add remove functionality
-            document.querySelectorAll('.remove-btn').forEach(button => {
-                button.addEventListener('click', (e) => removeFromCart(e));
-            });
-        }
-
-        // Remove item from cart
-        function removeFromCart(event) {
-            const index = event.target.dataset.index;
-            cart.splice(index, 1); // Remove item from cart
-            updateCart(); // Update the cart display
-        }
-    </script>
+    <div class="save-basket-container" style="margin-top: 20px; text-align: center;">
+        <h3>Save Your Basket</h3>
+        <form id="save-basket-form">
+            <div style="margin-bottom: 10px;">
+                <label for="basket-name">Basket Name:</label>
+                <input type="text" id="basket-name" required>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label for="basket-frequency">Delivery Frequency:</label>
+                <select id="basket-frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly" selected>Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Save Basket</button>
+        </form>
+    </div>
+    
+    <script src="/js/products.js"></script>
+    <script src="/js/basket.js"></script>
 </body>
 </html>
