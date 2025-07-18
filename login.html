@@ -17,6 +17,14 @@
         width: 100vw;
         height: 100vh;
     }
+    
+    .error-message {
+        color: #ff3333;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        text-align: left;
+        min-height: 20px;
+    }
 
     .container {
         height: 100%;
@@ -117,17 +125,18 @@
                 </div>
                 <form id="login-form" class="form active">
                     <h2>Login</h2>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <div id="login-error" class="error-message"></div>
                     <button type="submit">Login</button>
                 </form>
                 <form id="signup-form" class="form">
                     <h2>Sign Up</h2>
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                    <input type="OTP" placeholder="enter OTP">
+                    <input type="text" id="signup-fullname" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <div id="signup-error" class="error-message"></div>
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
@@ -139,12 +148,15 @@
         const signupBtn = document.getElementById('signup-btn');
         const loginForm = document.getElementById('login-form');
         const signupForm = document.getElementById('signup-form');
+        const loginError = document.getElementById('login-error');
+        const signupError = document.getElementById('signup-error');
 
         loginBtn.addEventListener('click', () => {
             loginBtn.classList.add('active');
             signupBtn.classList.remove('active');
             loginForm.classList.add('active');
             signupForm.classList.remove('active');
+            loginError.textContent = '';
         });
 
         signupBtn.addEventListener('click', () => {
@@ -152,6 +164,79 @@
             loginBtn.classList.remove('active');
             signupForm.classList.add('active');
             loginForm.classList.remove('active');
+            signupError.textContent = '';
+        });
+        
+        // Login form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    loginError.textContent = data.message || 'Login failed';
+                    return;
+                }
+                
+                // Redirect to home page on successful login
+                window.location.href = '/index.html';
+                
+            } catch (error) {
+                loginError.textContent = 'An error occurred. Please try again.';
+                console.error('Login error:', error);
+            }
+        });
+        
+        // Signup form submission
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('signup-fullname').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            
+            // Basic validation
+            if (password !== confirmPassword) {
+                signupError.textContent = 'Passwords do not match';
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ fullName, email, password, confirmPassword })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    signupError.textContent = data.message || 'Signup failed';
+                    return;
+                }
+                
+                // Redirect to home page on successful signup
+                window.location.href = '/index.html';
+                
+            } catch (error) {
+                signupError.textContent = 'An error occurred. Please try again.';
+                console.error('Signup error:', error);
+            }
         });
     </script>
 </body>

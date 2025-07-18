@@ -138,14 +138,16 @@ nav ul li a:hover {
     font-size: 27px;
     border: none;
     border-radius: 5px;
-    background-color: black;
+    background-color: #32a852;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .authorize button:hover {
-    background-color: #0056b3;
+    background-color: #28a745;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 main {
     text-align: center;
@@ -180,14 +182,23 @@ main {
 }
 
 .tagline button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    background-color:rgb(93, 151, 108);
+    border-radius: 8px;
+    background-color: #32a852;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tagline button:hover {
+    background-color: #28a745;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -309,16 +320,23 @@ footer {
     padding-left: 1.8%;
 }
 .support button{
-    padding-top: 25;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    background-color: black;
+    border-radius: 8px;
+    background-color: #32a852;
     color: white;
     cursor: pointer;
     gap: 10px;
-    transition: background-color 0.3s; 
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.support button:hover {
+    background-color: #28a745;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 .track img {
     height: 650px;
